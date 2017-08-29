@@ -103,9 +103,9 @@ class Job {
     /**
      * @var bool
      *
-     * @ORM\Column(name="is_validated", type="boolean")
+     * @ORM\Column(name="is_activated", type="boolean", nullable=true)
      */
-    private $isValidated;
+    private $isActivated;
 
     /**
      * @var string
@@ -147,12 +147,12 @@ class Job {
     /**
      * Set categoryId
      *
-     * @param integer $categoryId
+     * @param integer $category
      *
      * @return Job
      */
-    public function setCategoryId($categoryId) {
-        $this->categoryId = $categoryId;
+    public function setCategory($category) {
+        $this->category = $category;
 
         return $this;
     }
@@ -162,7 +162,7 @@ class Job {
      *
      * @return int
      */
-    public function getCategoryId() {
+    public function getCategory() {
         return $this->categoryId;
     }
 
@@ -387,25 +387,25 @@ class Job {
     }
 
     /**
-     * Set isValidated
+     * Set isActivated
      *
-     * @param boolean $isValidated
+     * @param boolean $isActivated
      *
      * @return Job
      */
-    public function setIsValidated($isValidated) {
-        $this->isValidated = $isValidated;
+    public function setIsActivated($isActivated) {
+        $this->isActivated = $isActivated;
 
         return $this;
     }
 
     /**
-     * Get isValidated
+     * Get isActivated
      *
      * @return bool
      */
-    public function getIsValidated() {
-        return $this->isValidated;
+    public function getIsActivated() {
+        return $this->isActivated;
     }
 
     /**
