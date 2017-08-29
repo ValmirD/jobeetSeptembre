@@ -9,9 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="affiliate")
  * @ORM\Entity(repositoryClass="Ens\JobeetBundle\Repository\AffiliateRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
-class Affiliate
-{
+class Affiliate {
+
     /**
      * @var int
      *
@@ -56,14 +57,19 @@ class Affiliate
      */
     private $createdAt;
 
+    /**
+     * @var array
+     * 
+     * @ORM\OneToMany(targetEntity="CategoryAffiliate", mappedBy="affiliateId")
+     */
+    private $category_affiliates;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -74,8 +80,7 @@ class Affiliate
      *
      * @return Affiliate
      */
-    public function setUrl($url)
-    {
+    public function setUrl($url) {
         $this->url = $url;
 
         return $this;
@@ -86,8 +91,7 @@ class Affiliate
      *
      * @return string
      */
-    public function getUrl()
-    {
+    public function getUrl() {
         return $this->url;
     }
 
@@ -98,8 +102,7 @@ class Affiliate
      *
      * @return Affiliate
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -110,8 +113,7 @@ class Affiliate
      *
      * @return string
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -122,8 +124,7 @@ class Affiliate
      *
      * @return Affiliate
      */
-    public function setToken($token)
-    {
+    public function setToken($token) {
         $this->token = $token;
 
         return $this;
@@ -134,8 +135,7 @@ class Affiliate
      *
      * @return string
      */
-    public function getToken()
-    {
+    public function getToken() {
         return $this->token;
     }
 
@@ -146,8 +146,7 @@ class Affiliate
      *
      * @return Affiliate
      */
-    public function setIsActive($isActive)
-    {
+    public function setIsActive($isActive) {
         $this->isActive = $isActive;
 
         return $this;
@@ -158,8 +157,7 @@ class Affiliate
      *
      * @return bool
      */
-    public function getIsActive()
-    {
+    public function getIsActive() {
         return $this->isActive;
     }
 
@@ -170,8 +168,7 @@ class Affiliate
      *
      * @return Affiliate
      */
-    public function setCreatedAt($createdAt)
-    {
+    public function setCreatedAt($createdAt) {
         $this->createdAt = $createdAt;
 
         return $this;
@@ -182,9 +179,24 @@ class Affiliate
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
-    {
+    public function getCreatedAt() {
         return $this->createdAt;
     }
-}
 
+    /**
+     * Get categoryAffiliates
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategoryAffiliates() {
+        return $this->category_affiliates;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue() {
+        $this->createdAt = new \DateTime();
+    }
+
+}

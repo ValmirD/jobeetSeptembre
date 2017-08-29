@@ -24,14 +24,16 @@ class CategoryAffiliate
     /**
      * @var int
      *
-     * @ORM\Column(name="category_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="category_affiliates")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $categoryId;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="affiliate_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Affiliate", inversedBy="category_affiliates")
+     * @ORM\JoinColumn(name="affiliate_id", referencedColumnName="id")
      */
     private $affiliateId;
 

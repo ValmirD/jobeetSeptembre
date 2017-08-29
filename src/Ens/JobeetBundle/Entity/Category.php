@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="Ens\JobeetBundle\Repository\CategoryRepository")
  */
-class Category
-{
+class Category {
+
     /**
      * @var int
      *
@@ -28,14 +28,24 @@ class Category
      */
     private $name;
 
+    /**
+     *
+     * @var array @ORM\OneToMany(targetEntity="Job", mappedBy="categoryId")
+     */
+    private $jobs;
+
+    /**
+     *
+     * @var array @ORM\OneToMany(targetEntity="CategoryAffiliate", mappedBy="categoryId")
+     */
+    private $category_affiliates;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -46,8 +56,7 @@ class Category
      *
      * @return Category
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -58,9 +67,21 @@ class Category
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
-}
 
+    /**
+     * Get jobs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobs() {
+        return $this->jobs;
+    }
+
+    public function getCategoryAffiliates() {
+        return $this->category_affiliates;
+    }
+
+}
