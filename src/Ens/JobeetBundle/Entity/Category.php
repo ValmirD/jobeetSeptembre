@@ -84,4 +84,8 @@ class Category {
         return $this->category_affiliates;
     }
 
+    public function __toString() {
+        return $this->getName();
+    }
+
 }

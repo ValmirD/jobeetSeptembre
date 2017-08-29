@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Job controller.
  *
- * @Route("ens_job")
+ * @Route("/job")
  */
 class JobController extends Controller
 {
@@ -26,7 +26,7 @@ class JobController extends Controller
 
         $jobs = $em->getRepository('EnsJobeetBundle:Job')->findAll();
 
-        return $this->render('job/index.html.twig', array(
+        return $this->render('EnsJobeetBundle:Job:index.html.twig', array(
             'jobs' => $jobs,
         ));
     }
@@ -51,7 +51,7 @@ class JobController extends Controller
             return $this->redirectToRoute('ens_job_show', array('id' => $job->getId()));
         }
 
-        return $this->render('job/new.html.twig', array(
+        return $this->render('EnsJobeetBundle:Job:new.html.twig', array(
             'job' => $job,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class JobController extends Controller
     {
         $deleteForm = $this->createDeleteForm($job);
 
-        return $this->render('job/show.html.twig', array(
+        return $this->render('EnsJobeetBundle:Job:show.html.twig', array(
             'job' => $job,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class JobController extends Controller
             return $this->redirectToRoute('ens_job_edit', array('id' => $job->getId()));
         }
 
-        return $this->render('job/edit.html.twig', array(
+        return $this->render('EnsJobeetBundle:Job:edit.html.twig', array(
             'job' => $job,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

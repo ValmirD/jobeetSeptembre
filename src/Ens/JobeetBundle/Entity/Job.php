@@ -162,7 +162,7 @@ class Job {
      *
      * @return int
      */
-    public function getCategory() {
+    public function getCategoryId() {
         return $this->categoryId;
     }
 
