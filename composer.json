@@ -3,11 +3,14 @@
     "license": "MIT",
     "type": "project",
     "description": "The \"Symfony Standard Edition\" distribution",
-    "autoload": {
+	"autoload": {
         "psr-4": {
-            "AppBundle\\": "src/AppBundle"
+            "": "src/"
         },
-        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
+        "classmap": [
+            "app/AppKernel.php",
+            "app/AppCache.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": { "Tests\\": "tests/" },

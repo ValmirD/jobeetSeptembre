@@ -4,5 +4,5 @@ ens_jobeet:
     prefix:   /
 
 app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+  resource: '@AppBundle/Controller/'
+  type: annotation
