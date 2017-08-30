@@ -17,7 +17,7 @@ class JobController extends Controller
     /**
      * Lists all job entities.
      *
-     * @Route("/", name="ens_job_index")
+     * @Route("/", name="ens_job")
      * @Method("GET")
      */
     public function indexAction()
